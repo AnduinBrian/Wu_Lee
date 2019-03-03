@@ -121,7 +121,7 @@ def get_random(matrix,key,value):
 if __name__ == "__main__":
 	if len(sys.argv) >= 4:
 		#Encryp
-		if sys.argv[1] == "-E":
+		if sys.argv[1] == "-E" and len(sys.argv) == 6:
 			filename_in = sys.argv[3]
 			filename_out = sys.argv[5]
 			#input key
@@ -172,8 +172,8 @@ if __name__ == "__main__":
 					print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 					print "\nDone\n\t\t\t\t\t\t{Unicorn-Team}"
 		#Decryp			
-		if sys.argv[1] == "-D":
-			filename_out = sys.argv[3]
+		elif sys.argv[1] == "-D" and len(sys.argv) == 4:
+			filename_in = sys.argv[3]
 			#input key
 			key = raw_input("\nNhap ma tran key 2x2: ")
 			key_array = [[int(x) for x in z] for z in key]
@@ -182,7 +182,7 @@ if __name__ == "__main__":
 			length = raw_input("\nNhap vao do dai tin duoc giau: ")
 			string = ""
 			#open and convert image to matrix
-			matrix = convert_to_matrix(filename_out)
+			matrix = convert_to_matrix(filename_in)
 			subMatrix = divide_matrix(matrix,2,2)
 			#Decryp
 			i = 0
@@ -214,6 +214,5 @@ if __name__ == "__main__":
 			print "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
 			print "Doan mess duoc giau: \n%s" % output_string
 			print "\nDone\n\t\t\t\t\t\t{Unicorn-Team}"
-
 	else:
 		print "\nUsage: python wu_lee.py -[option] -i input_file -o output_file\n-E: Encryp mode\n-D: Decryp mode\n"
