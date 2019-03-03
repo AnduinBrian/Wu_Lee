@@ -119,21 +119,23 @@ def get_random(matrix,key,value):
 
 #main
 if __name__ == "__main__":
-	if len(sys.argv) == 2:
+	if len(sys.argv) >= 4:
 		#Encryp
 		if sys.argv[1] == "-E":
+			filename_in = sys.argv[3]
+			filename_out = sys.argv[5]
 			#input key
-			key = raw_input("Nhap ma tran key 2x2: ")
+			key = raw_input("\nNhap ma tran key 2x2: ")
 			key_array = [[int(x) for x in z] for z in key]
 			key_matrix = np.reshape(key_array,(-1,2))
 			#input string
-			string = raw_input("Nhap mess: ")
+			string = raw_input("\nNhap mess: ")
 			bin_string =''.join(convert_string_to_bin(string))
 			bin_array = []
 			for i in bin_string:
 				bin_array.append(int(i))
 			#open and convert image to matrix
-			matrix = convert_to_matrix("binary.png")
+			matrix = convert_to_matrix(filename_in)
 			subMatrix = divide_matrix(matrix,2,2)
 			#hide mess
 			i = 0
@@ -165,21 +167,22 @@ if __name__ == "__main__":
 					temp_1 = convert_to_matrix("out.png")
 					sub_temp = divide_matrix(temp_1,2,2)
 					merge = merge(sub_temp,140,200)
-					save_file(merge,"out.png")
-					print "Do dai doan tin: %d" % len(string)
-					print "\n"
-					print "Done - @copyright: Brian_Stormrage"
+					save_file(merge,filename_out)
+					print "\nDo dai doan tin: %d\n" % len(string)
+					print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+					print "\nDone\n\t\t\t\t\t\t{Unicorn-Team}"
 		#Decryp			
 		if sys.argv[1] == "-D":
+			filename_out = sys.argv[3]
 			#input key
-			key = raw_input("Nhap ma tran key 2x2: ")
+			key = raw_input("\nNhap ma tran key 2x2: ")
 			key_array = [[int(x) for x in z] for z in key]
 			key_matrix = np.reshape(key_array,(-1,2))
 			#string
-			length = raw_input("Nhap vao do dai tin dau: ")
+			length = raw_input("\nNhap vao do dai tin duoc giau: ")
 			string = ""
 			#open and convert image to matrix
-			matrix = convert_to_matrix("out.png")
+			matrix = convert_to_matrix(filename_out)
 			subMatrix = divide_matrix(matrix,2,2)
 			#Decryp
 			i = 0
@@ -208,9 +211,9 @@ if __name__ == "__main__":
 			#create output string
 			out = [string[i:i+8] for i in range(0, len(string), 8)]
 			output_string = convert_bin_to_string(out)
-			print "Doan mess duoc giau: %s" % output_string
-			print "\n"
-			print "Done - @copyright: Brian_Stormrage"
+			print "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+			print "Doan mess duoc giau: \n%s" % output_string
+			print "\nDone\n\t\t\t\t\t\t{Unicorn-Team}"
 
 	else:
-		print "Usage: python wu_lee.py -[option]\n-E: Encryp mode\n-D: Decryp mode"
+		print "\nUsage: python wu_lee.py -[option] -i input_file -o output_file\n-E: Encryp mode\n-D: Decryp mode\n"
