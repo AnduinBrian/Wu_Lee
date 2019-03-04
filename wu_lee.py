@@ -19,9 +19,16 @@ def convert_bin_to_string(string_array):
 	return string
 
 #and 2 matrix
-def and_matrix(matrix_1,matrix_2):
-	result = [[matrix_1[i][j] & matrix_2[i][j] for j in range(len(matrix_1[0]))] for i in range(len(matrix_1))]
+def and_matrix(matrix,key):
+	result = [[0 for m in range(len(matrix[0]))] for n in range(len(matrix))]
+	for i in range(len(matrix)):
+		for j in range(len(matrix[0])):
+			if matrix[i][j] == key[i][j] and matrix[i][j] == 1:
+				result[i][j] = 1
+			else:
+				result[i][j] = 0
 	return result
+
 
 #count and return sum of bit 1
 def num_Of_Bit1(matrix):
@@ -137,6 +144,7 @@ if __name__ == "__main__":
 			#open and convert image to matrix
 			matrix = convert_to_matrix(filename_in)
 			subMatrix = divide_matrix(matrix,2,2)
+			check = False
 			#hide mess
 			i = 0
 			count = 0
@@ -170,13 +178,18 @@ if __name__ == "__main__":
 					save_file(merge,filename_out)
 					print "\nDo dai doan tin: %d\n" % len(string)
 					print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-					print "\nDone\n\t\t\t\t\t\t{Unicorn-Team}"
+					check = True
+			if check == True:
+				print "\nDone\n\t\t\t------------- Unicorn-Team -------------n"
+			else:
+				print "Something error !!!"
+
 		#Decryp			
 		elif sys.argv[1] == "-D" and len(sys.argv) == 4:
 			filename_in = sys.argv[3]
 			#input key
-			key = raw_input("\nNhap ma tran key 2x2: ")
-			key_array = [[int(x) for x in z] for z in key]
+			intput_key = raw_input("\nNhap ma tran key 2x2: ")
+			key_array = [[int(x) for x in z] for z in intput_key]
 			key_matrix = np.reshape(key_array,(-1,2))
 			#string
 			length = raw_input("\nNhap vao do dai tin duoc giau: ")
@@ -213,7 +226,7 @@ if __name__ == "__main__":
 			output_string = convert_bin_to_string(out)
 			print "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
 			print "Doan mess duoc giau: \n%s" % output_string
-			print "\nDone\n\t\t\t\t\t\t{Unicorn-Team}"
+			print "\nDone\n\t\t\t------------- Unicorn-Team -------------\n"
 		else:
 			print "\nWrong parameter, please check\n"
 	else:
