@@ -4,10 +4,10 @@ Giấu tin trong ảnh nhị phân áp dụng thuật toán Wu & Lee. Hiện t�
 Usage: python wu_lee.py -[option] -i [file_name] -o [file_name]
 + E: Encyrp mode
 + D: Decryp mode
-+ i: input file for Encryp/Decryp
-+ o: input file for output when Encryp only
++ i: Ảnh phủ (Encryp) / ảnh chứa tin (Decryp)
++ o: Ảnh sau khi giấu (Encryp)
 
-Key allow:
+Key có thể sử dụng:
 + 0111
 + 1011
 + 1101
