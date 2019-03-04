@@ -162,9 +162,9 @@ if __name__ == "__main__":
 					i+=1
 				#create a output file
 				if i == len(bin_string):
-					test = merge(subMatrix,140,200)
-					out = save_file(test,"out.png")
-					temp_1 = convert_to_matrix("out.png")
+					temp = merge(subMatrix,140,200)
+					out = save_file(temp,filename_out)
+					temp_1 = convert_to_matrix(filename_out)
 					sub_temp = divide_matrix(temp_1,2,2)
 					merge = merge(sub_temp,140,200)
 					save_file(merge,filename_out)
