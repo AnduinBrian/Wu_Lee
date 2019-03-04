@@ -214,5 +214,7 @@ if __name__ == "__main__":
 			print "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
 			print "Doan mess duoc giau: \n%s" % output_string
 			print "\nDone\n\t\t\t\t\t\t{Unicorn-Team}"
+		else:
+			print "\nWrong parameter, please check\n"
 	else:
 		print "\nUsage: python wu_lee.py -[option] -i input_file -o output_file\n-E: Encryp mode\n-D: Decryp mode\n"
