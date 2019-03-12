@@ -5,7 +5,7 @@ Usage: python wu_lee.py -[option] -i [file_name] -o [file_name]
 + Option: 
   + E: Encode mode
   + D: Decode mode
-+ i: Ảnh phủ (Encryp) / ảnh chứa tin (Decryp)
++ i: Ảnh phủ (Encode) / ảnh chứa tin (Decode)
 + o: Ảnh sau khi giấu (Encryp)
 
 Key có thể sử dụng:
